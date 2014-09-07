@@ -22,13 +22,7 @@ ExternalProject_Add(gmock_src
 		  cp ../gmock_src/gtest/include/gtest ${CATKIN_DEVEL_PREFIX}/include/ -rf
 )
 
-cs_add_library(${PROJECT_NAME} src/dependency_tracker.cc)
-add_dependencies(${PROJECT_NAME} gmock_src)
-target_link_libraries(${PROJECT_NAME} 
-  ${CATKIN_DEVEL_PREFIX}/lib/libopencv_core${CMAKE_SHARED_LIBRARY_SUFFIX})
-
 cs_install()
-
 cs_export(
   INCLUDE_DIRS ${CATKIN_DEVEL_PREFIX}/include
   CFG_EXTRAS gmock-extras.cmake)
