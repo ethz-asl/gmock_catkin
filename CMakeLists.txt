@@ -18,8 +18,8 @@ ExternalProject_Add(gmock_src
 		  cp ../gmock_src/libgmock_main.a ${CATKIN_DEVEL_PREFIX}/lib/ &&
 		  cp ../gmock_src/gtest/libgtest.a ${CATKIN_DEVEL_PREFIX}/lib/ &&
 		  cp ../gmock_src/gtest/libgtest_main.a ${CATKIN_DEVEL_PREFIX}/lib/ &&
-		  cp ../gmock_src/include/gmock ${CATKIN_DEVEL_PREFIX}/include/ -rf &&
-		  cp ../gmock_src/gtest/include/gtest ${CATKIN_DEVEL_PREFIX}/include/ -rf
+		  cp -rf ../gmock_src/include/gmock ${CATKIN_DEVEL_PREFIX}/include/ &&
+		  cp -rf ../gmock_src/gtest/include/gtest ${CATKIN_DEVEL_PREFIX}/include/
 )
 
 cs_install()
