@@ -12,14 +12,22 @@ file(MAKE_DIRECTORY ${CATKIN_DEVEL_PREFIX}/include)
 ExternalProject_Add(gmock_src
   URL https://googlemock.googlecode.com/files/gmock-1.7.0.zip
   UPDATE_COMMAND ""
-  CONFIGURE_COMMAND cd ../gmock_src && cmake . -DCMAKE_CXX_FLAGS=-fPIC
+  CONFIGURE_COMMAND cd ../gmock_src && 
+  	cmake . 
+  	-DCMAKE_CXX_FLAGS=-fPIC 
+  	-DBUILD_SHARED_LIBS=ON
   BUILD_COMMAND cd ../gmock_src && make -j8
-  INSTALL_COMMAND cp ../gmock_src/libgmock.a ${CATKIN_DEVEL_PREFIX}/lib/ &&
-		  cp ../gmock_src/libgmock_main.a ${CATKIN_DEVEL_PREFIX}/lib/ &&
-		  cp ../gmock_src/gtest/libgtest.a ${CATKIN_DEVEL_PREFIX}/lib/ &&
-		  cp ../gmock_src/gtest/libgtest_main.a ${CATKIN_DEVEL_PREFIX}/lib/ &&
-		  cp -rf ../gmock_src/include/gmock ${CATKIN_DEVEL_PREFIX}/include/ &&
-		  cp -rf ../gmock_src/gtest/include/gtest ${CATKIN_DEVEL_PREFIX}/include/
+  INSTALL_COMMAND
+  	cp -a
+		../gmock_src/libgmock${CMAKE_SHARED_LIBRARY_SUFFIX} 
+		../gmock_src/libgmock_main${CMAKE_SHARED_LIBRARY_SUFFIX} 
+		../gmock_src/gtest/libgtest${CMAKE_SHARED_LIBRARY_SUFFIX} 
+		../gmock_src/gtest/libgtest_main${CMAKE_SHARED_LIBRARY_SUFFIX} 	
+		${CATKIN_DEVEL_PREFIX}/lib/ &&
+	cp -rf
+		../gmock_src/include/gmock 
+		../gmock_src/gtest/include/gtest 
+		${CATKIN_DEVEL_PREFIX}/include/
 )
 
 cs_install()
