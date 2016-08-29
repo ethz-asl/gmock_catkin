@@ -10,7 +10,7 @@ include(ExternalProject)
 file(MAKE_DIRECTORY ${CATKIN_DEVEL_PREFIX}/include)
 
 ExternalProject_Add(gmock_src
-  URL https://googlemock.googlecode.com/files/gmock-1.7.0.zip
+  URL ftp://frisal.switch.ch/pool/4/mirror/gentoo/distfiles/gmock-1.7.0.zip
   UPDATE_COMMAND ""
   CONFIGURE_COMMAND cd ../gmock_src && cmake . -DCMAKE_CXX_FLAGS=-fPIC
   BUILD_COMMAND cd ../gmock_src && make -j8
